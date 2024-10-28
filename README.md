@@ -66,21 +66,24 @@
    res.send({ title: "Express" });
    ```
 
-7. Copy the `config` folder from Slack. This folder should contain:
+7. Copy the `data` folder from this repo into your project. This folder should contain:
+
+- `init_db.sql`: A file containing the SQL code to build your database
+
+8. Copy the `config` folder from this repo into your project. This folder should contain:
 
    - `db.js`: A wrapper around DB connections, allowing the use of `pool.query()` in your code.
    - `migrate.js`: A migration file to (re)create DB tables and insert sample data.
-   - `init_db.sql`: A file containing the SQL code to build your database
 
-8. Create a `.env` file (in the root project directory) to store your database connection information. You can follow the format in the `.env.example` file. It should include the name of your project's database, as well as your host, MySQL username and password.
+9. Create a `.env` file (in the root project directory) to store your database connection information. You can follow the format in the `.env.example` file. It should include the name of your project's database, as well as your host, MySQL username and password.
 
-9. Modify the start script in `package.json` to use `nodemon`:
+10. Modify the start script in `package.json` to use `nodemon`:
 
-   ```json
-   "start": "nodemon ./bin/www"
-   ```
+```json
+"start": "nodemon ./bin/www"
+```
 
-10. Add a new script in `package.json` to run your migrations:
+11. Add a new script in `package.json` to run your migrations:
 
     ```json
     "migrate": "node config/migrate.js"
@@ -89,15 +92,15 @@
     Once you've got your starter code for your SQL finalized in your `init_db.sql` file, run `npm run migrate` to create your DB tables.
     If you need to modify your table later, you can update your `init_db.sql` file and run `npm run migrate` again. This will delete your old table(s) and recreate them with the new structure.
 
-11. Update the default port in `./bin/www` from `3000` to `4000` (around line 15).
+12. Update the default port in `./bin/www` from `3000` to `4000` (around line 15).
 
-12. Initialize Git for your Express app:
+13. Initialize Git for your Express app:
 
     ```bash
     git init
     ```
 
-13. Add a `.gitignore` file to your project with at least the following entries:
+14. Add a `.gitignore` file to your project with at least the following entries:
 
     ```
     node_modules/
@@ -105,14 +108,14 @@
     .DS_Store
     ```
 
-14. Stage and commit your initial Express files:
+15. Stage and commit your initial Express files:
 
     ```bash
     git add .
     git commit -m "Initial Express commit"
     ```
 
-15. **Happy (back-end) coding!**
+16. **Happy (back-end) coding!**
 
 ---
 
