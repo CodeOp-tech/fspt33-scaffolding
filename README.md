@@ -60,45 +60,50 @@
    // app.use(express.static(path.join(__dirname, 'public')));
    ```
 
-6. Update the homepage route in `routes/index.js` to:
+6. Copy the `data` folder from this repo into your project. This folder should contain:
 
-   ```javascript
-   res.send({ title: "Express" });
-   ```
+   - `init_db.sql`: A file containing the SQL code to build your database
 
-7. Copy the `data` folder from this repo into your project. This folder should contain:
-
-- `init_db.sql`: A file containing the SQL code to build your database
-
-8. Copy the `config` folder from this repo into your project. This folder should contain:
+7. Copy the `config` folder from this repo into your project. This folder should contain:
 
    - `db.js`: A wrapper around DB connections, allowing the use of `pool.query()` in your code.
    - `migrate.js`: A migration file to (re)create DB tables and insert sample data.
 
-9. Create a `.env` file (in the root project directory) to store your database connection information. You can follow the format in the `.env.example` file. It should include the name of your project's database, as well as your host, MySQL username and password.
+8. Copy the `controllers` folder from this repo into your project. This is where you will build the logic for your routes. Currently, it just contains an example file so you can get everything connected. You can change and add to this later to fit your own needs. Look at your [class activites](https://github.com/CodeOp-tech/fspt33-databases/) if you'd like more examples.
 
-10. Modify the start script in `package.json` to use `nodemon`:
+9. As part of the automatic Express setup, you will have a `routes`folder with two starter files: `index.js`and `users.js`.
+
+Update `index.js` to import and use your example controller. Your final `index.js` file should look like this:
+
+```javascript
+const express = require("express");
+const router = express.Router();
+const getExample = require("../controllers/exampleController");
+
+/* GET example */
+router.get("/", getExample);
+
+module.exports = router;
+```
+
+10. Create a `.env` file (in the root project directory) to store your database connection information. You can follow the format in the `.env.example` file. It should include the name of your project's database, as well as your host, MySQL username and password.
+
+11. Modify the start script in `package.json` to use `nodemon`:
 
 ```json
 "start": "nodemon ./bin/www"
 ```
 
-11. Add a new script in `package.json` to run your migrations:
+12. Add a new script in `package.json` to run your migrations:
 
     ```json
     "migrate": "node config/migrate.js"
     ```
 
-    Once you've got your starter code for your SQL finalized in your `init_db.sql` file, run `npm run migrate` to create your DB tables.
+    Once your SQL starter code is finalized in your `init_db.sql` file, run `npm run migrate` to create your DB tables.
     If you need to modify your table later, you can update your `init_db.sql` file and run `npm run migrate` again. This will delete your old table(s) and recreate them with the new structure.
 
-12. Update the default port in `./bin/www` from `3000` to `4000` (around line 15).
-
-13. Initialize Git for your Express app:
-
-    ```bash
-    git init
-    ```
+13. Update the default port in `./bin/www` from `3000` to `4000` (around line 15).
 
 14. Add a `.gitignore` file to your project with at least the following entries:
 
@@ -108,14 +113,25 @@
     .DS_Store
     ```
 
-15. Stage and commit your initial Express files:
+15. Initialize Git for your Express app:
+
+    ```bash
+    git init
+    ```
+
+16. Stage and commit your initial Express files:
 
     ```bash
     git add .
     git commit -m "Initial Express commit"
     ```
 
-16. **Happy (back-end) coding!**
+17. Test your setup:
+    1. Run `npm start` to start your back-end server.
+    2. Open Postman and run a GET request on http://localhost:4000
+    3. You should see the successful response from your example controller: `{ message: "Welcome to Express" }`
+
+**You're done! Happy back-end coding :)**
 
 ---
 
