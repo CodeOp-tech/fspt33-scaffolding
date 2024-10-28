@@ -2,6 +2,7 @@
 
 ## Contents
 
+- [MySQL Scaffolding](#mysql-scaffolding)
 - [Express Scaffolding](#express-scaffolding)
 - [React Scaffolding](#react-scaffolding)
 - [Push Your Repositories to GitHub](#push-your-repositories-to-github)
