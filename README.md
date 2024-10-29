@@ -5,7 +5,7 @@
 - [MySQL Scaffolding](#mysql-scaffolding)
 - [Express Scaffolding](#express-scaffolding)
 - [React Scaffolding](#react-scaffolding)
-- [Push Your Repositories to GitHub](#push-your-repositories-to-github)
+- [Git and GitHub](#git-and-github)
 
 ---
 
@@ -34,11 +34,7 @@
 
    (If it prompts to install `express-generator`, confirm by typing "y".)
 
-3. Follow the prompts in the terminal to `cd` into your server and install dependencies:
-
-   ```bash
-   npm install
-   ```
+3. Follow the prompts in the terminal to `cd server` and install dependencies with `npm install`.
 
 4. Install necessary packages: `mysql2`, `nodemon`, `dotenv`, and `cors`:
 
@@ -165,9 +161,9 @@ Configure the React front end so it communicates with the Express back end:
 
 ---
 
-## Push Your Repositories to GitHub
+## Git and GitHub
 
-Once you have created both your server and your client:
+Once you have created both your server and your client, it's time to create a Git repository, and push it onto GitHub:
 
 1. In your terminal, make sure you are in your root project folder (i.e. not inside `server` or `client`).
 
