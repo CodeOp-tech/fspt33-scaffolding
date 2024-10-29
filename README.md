@@ -24,27 +24,29 @@
 
 ## Express Scaffolding
 
-1. In your terminal, run the following to scaffold a new Express application called "your-app-name-server" (replace with your actual app name):
+1. On your computer, create a new (empty) folder that will hold your project. In your terminal, use `cd` to navigate into your new project folder.
+
+2. From there, run the following to scaffold your Express server:
 
    ```bash
-   npx express-generator --no-view your-app-name-server
+   npx express-generator --no-view server
    ```
 
-   (If it prompts to install `express-generator`, confirm by typing "yes.")
+   (If it prompts to install `express-generator`, confirm by typing "y".)
 
-2. Follow the prompts in the terminal to `cd` into your new folder and install dependencies:
+3. Follow the prompts in the terminal to `cd` into your server and install dependencies:
 
    ```bash
    npm install
    ```
 
-3. Install necessary packages: `mysql2`, `nodemon`, `dotenv`, and `cors`:
+4. Install necessary packages: `mysql2`, `nodemon`, `dotenv`, and `cors`:
 
    ```bash
    npm install mysql2 nodemon dotenv cors
    ```
 
-4. Add the following lines to `app.js` to enable CORS and parse JSON requests:
+5. Add the following lines to `app.js` to enable CORS:
 
    ```javascript
    // Add this at the top:
@@ -54,24 +56,24 @@
    app.use(cors());
    ```
 
-5. Comment out the following line in `app.js` (around line 17) to prevent serving static files:
+6. Comment out the following line in `app.js` (around line 17) to prevent serving static files:
 
    ```javascript
    // app.use(express.static(path.join(__dirname, 'public')));
    ```
 
-6. Copy the `data` folder from this repo into your project. This folder should contain:
+7. Copy the `data` folder from this repo into your project. This folder should contain:
 
    - `init_db.sql`: A file containing the SQL code to build your database
 
-7. Copy the `config` folder from this repo into your project. This folder should contain:
+8. Copy the `config` folder from this repo into your project. This folder should contain:
 
    - `db.js`: A wrapper around DB connections, allowing the use of `pool.query()` in your code.
    - `migrate.js`: A migration file to (re)create DB tables and insert sample data.
 
-8. Copy the `controllers` folder from this repo into your project. This is where you will build the logic for your routes. Currently, it just contains an example file so you can get everything connected. You can change and add to this later to fit your own needs. Look at your [class activites](https://github.com/CodeOp-tech/fspt33-databases/) if you'd like more examples.
+9. Copy the `controllers` folder from this repo into your project. This is where you will build the logic for your routes. Currently, it just contains an example file so you can get everything connected. You can change and add to this later to fit your own needs. Look at your [class activites](https://github.com/CodeOp-tech/fspt33-databases/) if you'd like more examples of controller functions.
 
-9. As part of the automatic Express setup, you will have a `routes`folder with two starter files: `index.js`and `users.js`.
+10. As part of the automatic Express setup, you will have a `routes`folder with two starter files: `index.js`and `users.js`.
 
 Update `index.js` to import and use your example controller. Your final `index.js` file should look like this:
 
@@ -105,29 +107,17 @@ module.exports = router;
 
 13. Update the default port in `./bin/www` from `3000` to `4000` (around line 15).
 
-14. Add a `.gitignore` file to your project with at least the following entries:
+14. Add a `.gitignore` file to your server with at least the following entries:
 
     ```
     node_modules/
+    package-lock.json
     .env
     .DS_Store
     ```
 
-15. Initialize Git for your Express app:
-
-    ```bash
-    git init
-    ```
-
-16. Stage and commit your initial Express files:
-
-    ```bash
-    git add .
-    git commit -m "Initial Express commit"
-    ```
-
-17. Test your setup:
-    1. Run `npm start` to start your back-end server.
+15. Test your setup:
+    1. Run `npm start` inside your `server` folder to start your back-end server.
     2. Open Postman and run a GET request on http://localhost:4000
     3. You should see the successful response from your example controller: `{ message: "Welcome to Express" }`
 
@@ -137,24 +127,24 @@ module.exports = router;
 
 ## React Scaffolding
 
-1. In your terminal, scaffold a new React application called "your-app-name-client" using Vite:
+1. In your terminal, `cd ..` to go back to your main project folder. Scaffold your React front-end "client" using Vite:
 
    ```bash
-   npm create vite@latest your-app-name-client -- --template react
+   npm create vite@latest client -- --template react
    ```
 
-   Follow the prompts and choose React.
+   Follow the prompts and choose React and Javascript.
 
-2. Navigate into your React app folder and install `axios`:
+2. Navigate into your client folder and install `axios`:
    ```bash
    npm install axios
    ```
 
 ### Set Up Proxy for Full-Stack Development
 
-Configure the React front end communicates with the Express back end:
+Configure the React front end so it communicates with the Express back end:
 
-3. Open `vite.config.js` in your React app and configure a proxy to redirect API requests to the Express server:
+3. Open `vite.config.js` in your client, and configure a proxy to redirect API requests to the Express server:
    ```javascript
    export default defineConfig({
      plugins: [react()],
@@ -171,49 +161,25 @@ Configure the React front end communicates with the Express back end:
    ```
    **Note:** All back-end routes should start with `/api`.
 
-### Set Up Git for Your React App
-
-4. Initialize Git for your React app:
-
-   ```bash
-   git init
-   ```
-
-5. Add a `.gitignore` file to your project with the following entries:
-
-   ```
-   node_modules/
-   .DS_Store
-   ```
-
-6. Stage and commit your initial React files:
-
-   ```bash
-   git add .
-   git commit -m "Initial React commit"
-   ```
-
-7. **Happy (front-end) coding!**
+**That's it! Happy front-end coding :)**
 
 ---
 
 ## Push Your Repositories to GitHub
 
-Once you have created separate repositories for the front-end and back-end apps:
+Once you have created both your server and your client:
 
-1. On your GitHub page, select the `+` sign in the top right corner, and select **New repository**.
+1. In your terminal, make sure you are in your root project folder (i.e. not inside `server` or `client`).
 
-2. For each app (Express and React), create a new repository:
+2. Run `git init` to initialize a local Git repository.
 
-   - Name one repository something like `your-app-name-server` and the other `your-app-name-client`.
+3. Open GitHub, select the `+` sign in the top right corner, and select **New repository**.
 
-3. **Do not select "Add a README file."**
-
-4. Click **Create repository** for each repo.
+4. Create a new repository: choose your app name and click **Create repository**.
 
 5. Follow the instructions provided by GitHub for **"...or push an existing repository from the command line"** by copying and pasting those commands into a terminal in each project folder on your computer.
 
-6. Invite collaborators (like your instructor) to each repository:
+6. Invite your instructor and TA to be collaborators:
 
    - Go to the **Settings** tab of the repo on GitHub, then choose **Collaborators** in the left column, and press the **Add People** button. Grant admin access if necessary.
 
