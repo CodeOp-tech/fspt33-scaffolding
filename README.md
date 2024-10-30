@@ -58,18 +58,25 @@
    // app.use(express.static(path.join(__dirname, 'public')));
    ```
 
-7. Copy the `data` folder from this repo into your project. This folder should contain:
+7. Also in `app.js`, update the path for your routers so they are prefixed with `/api` (around lines 18-19):
+
+   ```javascript
+   app.use("/api", indexRouter);
+   app.use("/api/users", usersRouter);
+   ```
+
+8. Copy the `data` folder from this repo into your project. This folder should contain:
 
    - `init_db.sql`: A file containing the SQL code to build your database
 
-8. Copy the `config` folder from this repo into your project. This folder should contain:
+9. Copy the `config` folder from this repo into your project. This folder should contain:
 
    - `db.js`: A wrapper around DB connections, allowing the use of `pool.query()` in your code.
    - `migrate.js`: A migration file to (re)create DB tables and insert sample data.
 
-9. Copy the `controllers` folder from this repo into your project. This is where you will build the logic for your routes. Currently, it just contains an example file so you can get everything connected. You can change and add to this later to fit your own needs. Look at your [class activites](https://github.com/CodeOp-tech/fspt33-databases/) if you'd like more examples of controller functions.
+10. Copy the `controllers` folder from this repo into your project. This is where you will build the logic for your routes. Currently, it just contains an example file so you can get everything connected. You can change and add to this later to fit your own needs. Look at your [class activites](https://github.com/CodeOp-tech/fspt33-databases/) if you'd like more examples of controller functions.
 
-10. As part of the automatic Express setup, you will have a `routes`folder with two starter files: `index.js`and `users.js`.
+11. As part of the automatic Express setup, you will have a `routes`folder with two starter files: `index.js`and `users.js`.
 
 Update `index.js` to import and use your example controller. Your final `index.js` file should look like this:
 
@@ -114,7 +121,7 @@ module.exports = router;
 
 15. Test your setup:
     1. Run `npm start` inside your `server` folder to start your back-end server.
-    2. Open Postman and run a GET request on http://localhost:4000
+    2. Open Postman and run a GET request to http://localhost:4000/api
     3. You should see the successful response from your example controller: `{ message: "Welcome to Express" }`
 
 **You're done! Happy back-end coding :)**
@@ -141,6 +148,7 @@ module.exports = router;
 Configure the React front end so it communicates with the Express back end:
 
 3. Open `vite.config.js` in your client, and configure a proxy to redirect API requests to the Express server:
+
    ```javascript
    export default defineConfig({
      plugins: [react()],
@@ -155,7 +163,29 @@ Configure the React front end so it communicates with the Express back end:
      },
    });
    ```
+
    **Note:** All back-end routes should start with `/api`.
+
+4. Test your setup:
+
+   1. `cd server` and `npm start` to run your server.
+   2. `cd client` and `npm run dev` to run your client.
+   3. In your client's App.jsx:
+
+      1. At the top of the file, `import axios from 'axios'`.
+      2. Inside the App() function, paste the following test:
+
+      ```javascript
+      const testFetch = async () => {
+        // because of our proxy in vite.config, we can now fetch directly to "/api"
+        const response = await axios.get("/api");
+        console.log(response);
+      };
+
+      testFetch();
+      ```
+
+   4. Check your browser console - you should see the successful response object there.
 
 **That's it! Happy front-end coding :)**
 
