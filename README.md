@@ -76,9 +76,7 @@
 
 10. Copy the `controllers` folder from this repo into your project. This is where you will build the logic for your routes. Currently, it just contains an example file so you can get everything connected. You can change and add to this later to fit your own needs. Look at your [class activites](https://github.com/CodeOp-tech/fspt33-databases/) if you'd like more examples of controller functions.
 
-11. As part of the automatic Express setup, you will have a `routes`folder with two starter files: `index.js`and `users.js`.
-
-Update `index.js` to import and use your example controller. Your final `index.js` file should look like this:
+11. As part of the automatic Express setup, you will have a `routes`folder with two starter files: `index.js`and `users.js`.Update `index.js` to import and use your example controller. Your final `index.js` file should look like this:
 
 ```javascript
 const express = require("express");
@@ -91,15 +89,15 @@ router.get("/", getExample);
 module.exports = router;
 ```
 
-10. Create a `.env` file (in the root project directory) to store your database connection information. You can follow the format in the `.env.example` file. It should include the name of your project's database, as well as your host, MySQL username and password.
+12. Create a `.env` file (in the root project directory) to store your database connection information. You can follow the format in the `.env.example` file. It should include the name of your project's database, as well as your host, MySQL username and password.
 
-11. Modify the start script in `package.json` to use `nodemon`:
+13. Modify the start script in `package.json` to use `nodemon`:
 
 ```json
 "start": "nodemon ./bin/www"
 ```
 
-12. Add a new script in `package.json` to run your migrations:
+14. Add a new script in `package.json` to run your migrations:
 
     ```json
     "migrate": "node config/migrate.js"
@@ -108,9 +106,9 @@ module.exports = router;
     Once your SQL starter code is finalized in your `init_db.sql` file, run `npm run migrate` to create your DB tables.
     If you need to modify your table later, you can update your `init_db.sql` file and run `npm run migrate` again. This will delete your old table(s) and recreate them with the new structure.
 
-13. Update the default port in `./bin/www` from `3000` to `4000` (around line 15).
+15. Update the default port in `./bin/www` from `3000` to `4000` (around line 15).
 
-14. Add a `.gitignore` file to your server with at least the following entries:
+16. Add a `.gitignore` file to your server with at least the following entries:
 
     ```
     node_modules/
@@ -119,7 +117,7 @@ module.exports = router;
     .DS_Store
     ```
 
-15. Test your setup:
+17. Test your setup:
     1. Run `npm start` inside your `server` folder to start your back-end server.
     2. Open Postman and run a GET request to http://localhost:4000/api
     3. You should see the successful response from your example controller: `{ message: "Welcome to Express" }`
