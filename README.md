@@ -197,14 +197,16 @@ Once you have created both your server and your client, it's time to create a Gi
 
 2. Run `git init` to initialize a local Git repository.
 
-3. Open GitHub, select the `+` sign in the top right corner, and select **New repository**.
+3. Run `git add .` and `git commit -m "initial commit"`to stage and commit your initial setup.
 
-4. Create a new repository: choose your app name and click **Create repository**.
+4. Open GitHub, select the `+` sign in the top right corner, and select **New repository**.
 
-5. Follow the instructions provided by GitHub for **"...or push an existing repository from the command line"** by copying and pasting those commands into a terminal in each project folder on your computer.
+5. Create a new repository: choose your app name and click **Create repository**. Do **NOT** select the checkbod for "Add a README" file.
 
-6. Invite your instructor and TA to be collaborators:
+6. Follow the instructions provided by GitHub for **"...or push an existing repository from the command line"** by copying and pasting those commands into a terminal in each project folder on your computer.
+
+7. Invite your instructor and TA to be collaborators:
 
    - Go to the **Settings** tab of the repo on GitHub, then choose **Collaborators** in the left column, and press the **Add People** button. Grant admin access if necessary.
 
-7. **Happy coding!**
+8. **Happy coding!**
