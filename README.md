@@ -164,7 +164,15 @@ Configure the React front end so it communicates with the Express back end:
 
    **Note:** All back-end routes should start with `/api`.
 
-4. Test your setup:
+4. Add a `.gitignore` file to your server with at least the following entries:
+
+   ```
+   node_modules/
+   package-lock.json
+   .DS_Store
+   ```
+
+5. Test your setup:
 
    1. `cd server` and `npm start` to run your server.
    2. `cd client` and `npm run dev` to run your client.
